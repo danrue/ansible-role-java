@@ -11,7 +11,7 @@ This role utilizes the S3 module, and requires boto.  By default, this role will
 Role Variables
 --------------
 | variable | description | default | mandatory
-|----------|-------------|---------|
+|----------|-------------|---------|----------
 | `java_version` | formatted like `<major>u<update>` | 8u21 | yes
 | `java_arch` | architecture type | x64 | yes
 | `java_install_path` | base path to install to. | /opt/java | yes
