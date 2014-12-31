@@ -13,7 +13,7 @@
 - include: oracle6.yml
   when: java_type == "oracle" and not stoj.stat.exists and java_version | match("6u*")
 
-- include: oracle7.yml
+- include: oracle.yml
   when: java_type == "oracle" and not stoj.stat.exists and not java_version | match("6u*")
 
 - include: linking.yml
