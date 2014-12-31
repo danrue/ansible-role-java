@@ -4,4 +4,5 @@ java_version: 8u25
 java_arch: x64
 java_install_path: /opt/java
 java_type: oracle
-java_s3_base: /
+java_s3_base: /non-sps/oracle/java/
+java_s3_bucket: sps-build-deploy
