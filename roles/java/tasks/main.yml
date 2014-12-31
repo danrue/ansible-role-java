@@ -1,0 +1,20 @@
+---
+# tasks file for java
+- name: Ensure boto is installed
+  apt: name=python-boto update_cache=yes
+
+- name: Check for Java {{ java_version }}
+  stat: path={{java_install_path}}/jdk1.{{ java_version | regex_replace('^(\d).*u.*$', '\\1') }}.0_{{ java_version | regex_replace('^\d.*u(.*)$', '\\1') }}
+  register: stoj
+
+- name: Create directory {{ java_install_path }}
+  command: mkdir -p {{ java_install_path }} creates={{ java_install_path }}
+
+- include: oracle6.yml
+  when: java_type == "oracle" and not stoj.stat.exists and java_version | match("6u*")
+
+- include: oracle7.yml
+  when: java_type == "oracle" and not stoj.stat.exists and not java_version | match("6u*")
+
+- include: linking.yml
+  when: java_links

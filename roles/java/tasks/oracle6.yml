@@ -1,0 +1,13 @@
+#Java 6 Specifics
+- name: Check for Oracle Java {{ java_version }} archive
+  stat: path=/tmp/jdk-{{java_version}}-linux-{{java_arch}}.bin
+  register: stoarch6
+
+- name: Download Oracle Java {{ java_version }}
+  tags: java
+  s3: bucket={{ java_s3_bucket }} object={{ java_s3_base }}jdk-{{java_version}}-linux-{{java_arch}}.bin dest=/tmp/jdk-{{java_version}}-linux-{{java_arch}}.bin mode=get aws_access_key={{s3_key}} aws_secret_key={{s3_secret}}
+  when: not stoarch6.stat.exists
+
+- name: Extract Oracle Java {{ java_version }}
+  tags: java
+  command: /bin/bash /tmp/jdk-{{java_version}}-linux-{{java_arch}}.bin -noregister chdir={{java_install_path}} creates={{java_install_path}}/jdk1.{{ java_version | regex_replace('^(\d).*u.*$', '\\1') }}.0_{{ java_version | regex_replace('^\d.*u(.*)$', '\\1') }}

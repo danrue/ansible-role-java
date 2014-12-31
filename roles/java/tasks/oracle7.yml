@@ -1,0 +1,17 @@
+---
+#Java 7+ Specifics
+
+- name: Check for Oracle Java {{ java_version }} archive
+  stat: path=/tmp/jdk-{{java_version}}-linux-{{java_arch}}.gz
+  register: stoarch7
+
+- name: Download Oracle Java {{ java_version }}
+  tags: java
+  s3: bucket={{ java_s3_bucket }} object={{ java_s3_base }}jdk-{{java_version}}-linux-{{java_arch}}.gz dest=/tmp/jdk-{{java_version}}-linux-{{java_arch}}.gz mode=get aws_access_key={{s3_key}} aws_secret_key={{s3_secret}}
+  when: not stoarch7.stat.exists
+
+- name: Extract Oracle Java {{ java_version }}
+  tags: java
+  unarchive: src=/tmp/jdk-{{java_version}}-linux-{{java_arch}}.gz dest={{java_install_path}} creates={{java_install_path}}/jdk1.{{ java_version | regex_replace('^(\d).*u.*$', '\\1') }}.0_{{ java_version | regex_replace('^\d.*u(.*)$', '\\1') }}
+
+

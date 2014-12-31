@@ -1,0 +1,4 @@
+.kitchen/
+*.iml
+.idea/
+.DS_Store

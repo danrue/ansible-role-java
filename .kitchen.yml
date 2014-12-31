@@ -1,0 +1,21 @@
+---
+driver:
+    name: vagrant
+
+provisioner:
+  name: ansible_playbook
+  roles_path: roles
+  hosts: kitchen-servers
+  require_ansible_repo: true
+  ansible_verbose: true
+  playbook: test/test.yml
+  extra_vars:
+   s3_key: "<%= ENV['AWS_ACCESS_KEY_ID'] %>" 
+   s3_secret: "<%= ENV['AWS_SECRET_ACCESS_KEY'] %>"
+
+platforms:
+  - name: ubuntu-14.04
+
+suites: 
+  - name: default
+#    playbook: test/test.yml

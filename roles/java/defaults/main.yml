@@ -1,0 +1,7 @@
+---
+# defaults file for java
+java_version: 8u25
+java_arch: x64
+java_install_path: /opt/java
+java_type: oracle
+java_s3_base: /
