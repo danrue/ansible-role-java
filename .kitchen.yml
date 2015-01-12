@@ -10,8 +10,9 @@ provisioner:
   ansible_verbose: true
   playbook: test/test.yml
   extra_vars:
-   s3_key: "<%= ENV['AWS_ACCESS_KEY_ID'] %>" 
-   s3_secret: "<%= ENV['AWS_SECRET_ACCESS_KEY'] %>"
+    s3_key: "<%= ENV['AWS_ACCESS_KEY_ID'] %>" 
+    s3_secret: "<%= ENV['AWS_SECRET_ACCESS_KEY'] %>"
+  ansible_version: 1.8.2
 
 platforms:
   - name: ubuntu-14.04
