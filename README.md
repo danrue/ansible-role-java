@@ -16,7 +16,7 @@ Role Variables
 | `java_arch` | architecture type | x64 | yes
 | `java_install_path` | base path to install to. | /opt/java | yes
 | `java_type` | only 'oracle' is supported at this time | none | yes
-| `java_links` | a dictionary/hash in the form of `{ binary: destination }` Eg. `{ java : /opt/java/java6 }` | none | no
+| `java_links` | a dictionary/hash in the form of `{ relative path: destination }` Eg. `{ '.' : /opt/java/java6 }` | none | no
 | `java_s3_bucket` | S3 bucket to download artifacts from | none | yes
 | `java_s3_base` | base path in the s3 bucket | `/` | yes
 | `s3_key` | AWS S3 access key id | none | no
@@ -34,7 +34,7 @@ An example playbook is included in the test directory, but here is a rundown on 
 
     - hosts: all
       roles:
-      - { role: java, java_version: 6u45, java_arch: x64, java_install_path: /opt/java, java_type: oracle, java_links: { java: /opt/java/java6 } }
+      - { role: java, java_version: 6u45, java_arch: x64, java_install_path: /opt/java, java_type: oracle, java_links: { '.': /opt/java/java6 } }
 
 License
 -------
