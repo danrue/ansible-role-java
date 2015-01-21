@@ -5,7 +5,7 @@
 
 - name: Download Oracle Java {{ java_version }}
   tags: java
-  s3: bucket={{ java_s3_bucket }} object={{ java_s3_base }}jdk-{{java_version}}-linux-{{java_arch}}.bin dest=/tmp/jdk-{{java_version}}-linux-{{java_arch}}.bin mode=get aws_access_key={{s3_key}} aws_secret_key={{s3_secret}}
+  s3: bucket={{ java_s3_bucket }} object={{ java_s3_base }}jdk-{{java_version}}-linux-{{java_arch}}.bin dest=/tmp/jdk-{{java_version}}-linux-{{java_arch}}.bin mode=get aws_access_key={{s3_key|default(omit)}} aws_secret_key={{s3_secret}|default(omit)}}
   when: not stoarch6.stat.exists
 
 - name: Extract Oracle Java {{ java_version }}
