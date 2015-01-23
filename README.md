@@ -3,10 +3,12 @@ Java
 
 This role will install different flavors of Java as specifies in the role variables.  Currently the only supported repository to download artifacts from is a specified S3 bucket.
 
+*note*: change tests/test.yml to point to real bucket and s3 base path before running tests!
+
 Requirements
 ------------
 
-This role utilizes the S3 module, and requires boto.  By default, this role will install the required package if it is missing.  You can then either use the required ENV variables, or set s3_key and s3_secret.
+This role utilizes a local S3_file  module, and requires boto.  By default, this role will install the required package if it is missing.  You can then either use the required ENV variables, or set s3_key and s3_secret.
 
 Role Variables
 --------------
