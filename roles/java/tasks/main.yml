@@ -2,6 +2,11 @@
 # tasks file for java
 - name: Ensure boto is installed
   apt: name=python-boto update_cache=yes
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+- name: Ensure boto is installed
+  yum: name=python-boto state=present
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
 
 - name: Check for Java {{ java_version }}
   stat: path={{java_install_path}}/jdk1.{{ java_version | regex_replace('^(\d).*u.*$', '\\1') }}.0_{{ java_version | regex_replace('^\d.*u(.*)$', '\\1') }}
