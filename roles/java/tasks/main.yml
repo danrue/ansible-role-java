@@ -10,8 +10,12 @@
   when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
   with_items: packages.yum
 
+- name: Set jdk_home fact
+  set_fact:
+    jdk_home={{ java_install_path }}/jdk1.{{ java_version | regex_replace('^(\d).*u.*$', '\\1') }}.0_{{ java_version | regex_replace('^\d.*u(.*)$', '\\1') }}
+
 - name: Check for Java {{ java_version }}
-  stat: path={{java_install_path}}/jdk1.{{ java_version | regex_replace('^(\d).*u.*$', '\\1') }}.0_{{ java_version | regex_replace('^\d.*u(.*)$', '\\1') }}
+  stat: path={{ jdk_home }}
   register: stoj
 
 - name: Create directory {{ java_install_path }}

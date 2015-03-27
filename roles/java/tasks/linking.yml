@@ -1,2 +1,3 @@
-- file: src={{java_install_path}}/jdk1.{{ java_version | regex_replace('^(\d).*u.*$', '\\1') }}.0_{{ java_version | regex_replace('^\d.*u(.*)$', '\\1') }}/{{ item.key }} dest={{ item.value }} state=link
+- name: Create java links
+  file: src={{ jdk_home }}/{{ item.key }} dest={{ item.value }} state=link
   with_dict: java_links

@@ -12,6 +12,4 @@
 
 - name: Extract Oracle Java {{ java_version }}
   tags: java
-  unarchive: copy=no src=/tmp/jdk-{{java_version}}-linux-{{java_arch}}.gz dest={{java_install_path}} creates={{java_install_path}}/jdk1.{{ java_version | regex_replace('^(\d).*u.*$', '\\1') }}.0_{{ java_version | regex_replace('^\d.*u(.*)$', '\\1') }}
-
-
+  unarchive: copy=no src=/tmp/jdk-{{java_version}}-linux-{{java_arch}}.gz dest={{java_install_path}} creates={{ jdk_home }}
