@@ -19,7 +19,12 @@
   register: stoj
 
 - name: Create directory {{ java_install_path }}
-  command: mkdir -p {{ java_install_path }} creates={{ java_install_path }}
+  file:
+    path: "{{ java_install_path }}"
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
 
 - include: oracle6.yml
   when: java_type == "oracle" and not stoj.stat.exists and java_version | match("6u*")
