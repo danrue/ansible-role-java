@@ -15,7 +15,14 @@
     mode: get
     aws_access_key: "{{ s3_key|default(omit) }}"
     aws_secret_key: "{{ s3_secret|default(omit) }}"
-  when: not stoarch7.stat.exists
+  when: not stoarch7.stat.exists and http_use != true
+
+- name: Download Oracle Java {{ java_version }} from HTTP
+  tags: java
+  get_url:
+    url: "{{ http_base_url }}/jdk-{{ java_version }}-linux-{{ java_arch }}.gz"
+    dest: "{{ media_dir }}/jdk-{{ java_version }}-linux-{{ java_arch }}.gz"
+  when: http_use == true
 
 - name: Extract Oracle Java {{ java_version }}
   tags: java
