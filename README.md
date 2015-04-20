@@ -23,6 +23,8 @@ Role Variables
 | `java_s3_base` | base path in the s3 bucket | `/` | no
 | `s3_key` | AWS S3 access key id | none | no
 | `s3_secret` | AWS S3 secret access key | none | no
+| `http_use` | Use HTTP instead of S3 - for faster testing in vagrant | false | no
+| `http_base_url` | URL for the directory that contains the java package | http://yum01.corp.spscommerce.net/sw_installers/java | no
 
 Dependencies
 ------------
