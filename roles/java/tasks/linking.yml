@@ -1,3 +1,6 @@
 - name: Create java links
-  file: src={{ jdk_home }}/{{ item.key }} dest={{ item.value }} state=link
+  file:
+    src: "{{ jdk_home }}/{{ item.key }}"
+    dest: "{{ item.value }}"
+    state: link
   with_dict: java_links

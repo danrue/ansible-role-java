@@ -1,12 +1,16 @@
 ---
 # tasks file for java
 - name: Ensure boto is installed
-  apt: name={{item}} update_cache=yes
+  apt:
+    name: "{{ item }}"
+    update_cache: yes
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
   with_items: packages.apt
 
 - name: Ensure boto is installed
-  yum: name={{item}} state=present
+  yum:
+    name: "{{ item }}"
+    state: present
   when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
   with_items: packages.yum
 
@@ -15,7 +19,8 @@
     jdk_home={{ java_install_path }}/jdk1.{{ java_version | regex_replace('^(\d).*u.*$', '\\1') }}.0_{{ java_version | regex_replace('^\d.*u(.*)$', '\\1') }}
 
 - name: Check for Java {{ java_version }}
-  stat: path={{ jdk_home }}
+  stat:
+    path: "{{ jdk_home }}"
   register: stoj
 
 - name: Create directory {{ java_install_path }}
@@ -27,10 +32,10 @@
     mode: 0755
 
 - include: oracle6.yml
-  when: java_type == "oracle" and not stoj.stat.exists and java_version | match("6u*")
+  when: java_type == "oracle" and not stoj.stat.exists and java_version | match("6u.*")
 
 - include: oracle.yml
-  when: java_type == "oracle" and not stoj.stat.exists and not java_version | match("6u*")
+  when: java_type == "oracle" and not stoj.stat.exists and not java_version | match("6u.*")
 
 - include: linking.yml
   when: java_links
