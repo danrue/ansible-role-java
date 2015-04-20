@@ -14,6 +14,14 @@
   when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
   with_items: packages.yum
 
+- name: Create media dir for downloads/install files
+  file:
+    path: "{{ media_dir }}"
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+
 - name: Set jdk_home fact
   set_fact:
     jdk_home={{ java_install_path }}/jdk1.{{ java_version | regex_replace('^(\d).*u.*$', '\\1') }}.0_{{ java_version | regex_replace('^\d.*u(.*)$', '\\1') }}

@@ -3,7 +3,7 @@
 
 - name: Check for Oracle Java {{ java_version }} archive
   stat: 
-    path: "/tmp/jdk-{{ java_version }}-linux-{{ java_arch }}.gz"
+    path: "{{ media_dir }}/jdk-{{ java_version }}-linux-{{ java_arch }}.gz"
   register: stoarch7
 
 - name: Download Oracle Java {{ java_version }} from s3
@@ -11,7 +11,7 @@
   s3_file: 
     bucket: "{{ java_s3_bucket }}"
     object: "{{ java_s3_base }}jdk-{{ java_version }}-linux-{{ java_arch }}.gz"
-    dest: "/tmp/jdk-{{ java_version }}-linux-{{ java_arch }}.gz"
+    dest: "{{ media_dir }}/jdk-{{ java_version }}-linux-{{ java_arch }}.gz"
     mode: get
     aws_access_key: "{{ s3_key|default(omit) }}"
     aws_secret_key: "{{ s3_secret|default(omit) }}"
@@ -21,6 +21,6 @@
   tags: java
   unarchive:
     copy: no
-    src: "/tmp/jdk-{{ java_version }}-linux-{{ java_arch }}.gz"
+    src: "{{ media_dir }}/jdk-{{ java_version }}-linux-{{ java_arch }}.gz"
     dest: "{{ java_install_path }}"
     creates: "{{ jdk_home }}"

@@ -3,3 +3,5 @@
 packages: 
    yum: [unzip, python-boto]
    apt: [unzip, python-boto]
+
+media_dir: '/opt/media'

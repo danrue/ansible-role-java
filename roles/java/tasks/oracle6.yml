@@ -1,7 +1,7 @@
 #Java 6 Specifics
 - name: Check for Oracle Java {{ java_version }} archive
   stat: 
-    path: "/tmp/jdk-{{ java_version }}-linux-{{ java_arch }}.bin"
+    path: "{{ media_dir }}/jdk-{{ java_version }}-linux-{{ java_arch }}.bin"
   register: stoarch6
 
 - name: Download Oracle Java {{ java_version }}
@@ -9,7 +9,7 @@
   s3_file:
     bucket: "{{ java_s3_bucket }}"
     object: "{{ java_s3_base }}jdk-{{ java_version }}-linux-{{ java_arch }}.bin"
-    dest: "/tmp/jdk-{{ java_version }}-linux-{{ java_arch }}.bin"
+    dest: "{{ media_dir }}/jdk-{{ java_version }}-linux-{{ java_arch }}.bin"
     mode: get
     aws_access_key: "{{ s3_key|default(omit) }}"
     aws_secret_key: "{{ s3_secret|default(omit) }}"
@@ -17,7 +17,7 @@
 
 - name: Extract Oracle Java {{ java_version }}
   tags: java
-  command: /bin/bash /tmp/jdk-{{ java_version }}-linux-{{ java_arch }}.bin -noregister
+  command: /bin/bash {{ media_dir }}/jdk-{{ java_version }}-linux-{{ java_arch }}.bin -noregister
   args:
     chdir: "{{ java_install_path }}"
     creates: "{{ jdk_home }}"
