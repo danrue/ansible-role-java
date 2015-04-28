@@ -3,7 +3,7 @@
 *.iml
 .idea/
 .DS_Store
-build/*
+build/
 !build/.keep
 VERSION
 roles/java/VERSION
