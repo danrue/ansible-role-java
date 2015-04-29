@@ -6,6 +6,8 @@ java_install_path: /opt/java
 java_type: oracle
 java_s3_base: /non-sps/oracle/java/
 java_s3_bucket: sps-build-deploy
+# Install the java placeholder package to tell apt/dpkg that java is installed
+java_placeholder_pkg: false
 
 # grab the files from an http server instead of s3
 http_use: false

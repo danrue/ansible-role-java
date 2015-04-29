@@ -47,3 +47,6 @@
 
 - include: linking.yml
   when: java_links
+
+- include: empty_pkg.yml
+  when: java_placeholder_pkg

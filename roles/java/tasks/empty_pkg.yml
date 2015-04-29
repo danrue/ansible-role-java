@@ -1,0 +1,10 @@
+---
+- name: copy empty java deb file
+  copy:
+    src: jre-manual_2.0_all.deb
+    dest: "{{ java_install_path }}/jre-manual_2.0_all.deb"
+
+- name: install empty java pkg
+  apt:
+    deb: "{{ java_install_path }}/jre-manual_2.0_all.deb"
+    state: present

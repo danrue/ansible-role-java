@@ -1,3 +1,4 @@
+---
 - name: Create java links
   file:
     src: "{{ jdk_home }}/{{ item.key }}"
