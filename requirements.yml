@@ -1,5 +1,5 @@
 ---
-- url: s3://sps-build-deploy/ansible/ansible-mod-s3_file-0.1.0.tgz
+- url: s3://sps-build-deploy/ansible/ansible-mod-s3_file-0.2.0.tgz
   paths:
     - from: s3_file.py
       to: roles/java/library
