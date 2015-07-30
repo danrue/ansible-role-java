@@ -12,3 +12,5 @@ java_placeholder_pkg: false
 # grab the files from an http server instead of s3
 http_use: false
 http_base_url: 'http://yum01.corp.spscommerce.net/sw_installers/java'
+
+proxy_env: {}
