@@ -21,6 +21,7 @@ Role Variables
 | `java_links` | a dictionary/hash in the form of `{ relative path: destination }` Eg. `{ '.' : /opt/java/java6 }` | none | yes
 | `java_s3_bucket` | S3 bucket to download artifacts from | none | yes
 | `java_s3_base` | base path in the s3 bucket | `/` | no
+| `proxy_env` | Environmental dictionary that may contain http_proxy, https_proxy. | {} | no
 | `s3_key` | AWS S3 access key id | none | no
 | `s3_secret` | AWS S3 secret access key | none | no
 | `http_use` | Use HTTP instead of S3 - for faster testing in vagrant | false | no
