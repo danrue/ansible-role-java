@@ -16,6 +16,7 @@
     aws_access_key: "{{ s3_key|default(omit) }}"
     aws_secret_key: "{{ s3_secret|default(omit) }}"
   when: not stoarch7.stat.exists and http_use != true
+  environment: proxy_env
 
 - name: Download Oracle Java {{ java_version }} from HTTP
   tags: java
