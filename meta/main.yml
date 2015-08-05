@@ -1,6 +1,6 @@
 ---
 galaxy_info:
-  author: Ryan O'Keeffe (okeefferd@gmail.com)
+  author: Ryan OKeeffe (okeefferd@gmail.com)
   description: This role will install different flavors of Java as specifies in the role variables.  Currently the only supported repository to download artifacts from is a specified S3 bucket.
   company: SPS Commerce
   license: Apache 2.0
@@ -35,6 +35,9 @@ galaxy_info:
   #- system
   #- web
 dependencies: 
-- { role: 'git+ssh://git@github.com/danrue/ansible-mod-s3file.git,origin/galaxy,s3_file' }
+- src: git+ssh://git@github.com/danrue/ansible-mod-s3file.git
+  version: origin/galaxy
+  name: s3_file
+  path: ./library
 
   
