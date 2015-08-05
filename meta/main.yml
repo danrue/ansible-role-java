@@ -1,4 +1,5 @@
 ---
+allow_duplicates: yes
 galaxy_info:
   author: Ryan OKeeffe (okeefferd@gmail.com)
   description: This role will install different flavors of Java as specifies in the role variables.  Currently the only supported repository to download artifacts from is a specified S3 bucket.
