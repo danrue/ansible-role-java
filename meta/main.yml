@@ -1,0 +1,42 @@
+---
+galaxy_info:
+  author: Ryan O'Keeffe (okeefferd@gmail.com)
+  description: This role will install different flavors of Java as specifies in the role variables.  Currently the only supported repository to download artifacts from is a specified S3 bucket.
+  company: SPS Commerce
+  license: Apache 2.0
+  min_ansible_version: 1.8
+  platforms:
+  #- name: EL
+  #  versions:
+  #  - all
+  #  - 5
+  #  - 6
+  #  - 7
+  - name: Ubuntu
+    versions:
+    - trusty
+  #
+  # Below are all categories currently available. Just as with
+  # the platforms above, uncomment those that apply to your role.
+  #
+  #categories:
+  #- cloud
+  #- cloud:ec2
+  #- cloud:gce
+  #- cloud:rax
+  #- clustering
+  #- database
+  #- database:nosql
+  #- database:sql
+  #- development
+  #- monitoring
+  #- networking
+  #- packaging
+  #- system
+  #- web
+dependencies: []
+  # List your role dependencies here, one per line. Only
+  # dependencies available via galaxy should be listed here.
+  # Be sure to remove the '[]' above if you add dependencies
+  # to this list.
+  
