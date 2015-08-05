@@ -35,6 +35,6 @@ galaxy_info:
   #- system
   #- web
 dependencies: 
-- { role: 'git+ssh://git@github.com/danrue/ansible-mod-s3file.git,galaxy,s3_file' }
+- { role: 'git+ssh://git@github.com/danrue/ansible-mod-s3file.git,origin/galaxy,s3_file' }
 
   
